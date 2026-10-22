@@ -23,3 +23,11 @@ IPTV is a different delivery path. Wikipedia's page on Internet Protocol televis
 What you give up is equally concrete. Cable's plant is a managed last mile with a truck roll when the box dies. IPTV rides whatever broadband you already pay for, so a congested evening Wi-Fi hop shows up as buffering, not as a line item. You also lose the regional sports network that the cable surcharge was funding, unless the IPTV bouquet actually carries that feed. I treat that as a checklist, not a slogan: write down the three channels you would miss, then check the list before you cancel.
 
 The useful comparison is not "is IPTV cheaper." It obviously is on the annual number. It is whether the hidden fees you stop paying are worth the reliability and channel gaps you take on. I keep returning to [xtreme iptv vs cable the real cost comparison](https://xtremeiptv.tv/blog/xtremeiptv-xtreme-iptv-vs-cable-comparison) when I need the line items in one place instead of reconstructing them from a pile of PDFs.
+
+## M3U playlists vs Xtream login: a maintainer's note
+
+I keep a running note on how player apps talk to providers, because the terminology trips up every newcomer. The old way is an M3U playlist: a plain text file listing stream URLs line by line, with #EXTINF tags carrying channel names and logos (the format goes back to Winamp, per https://en.wikipedia.org/wiki/M3U). The newer way is the Xtream Codes API: instead of a static file, the player logs into your provider's panel with a server URL, username, and password, then pulls channels, on-demand, and the guide over JSON.
+
+The practical difference shows up when something changes. With M3U, your provider edits the file and you re-import it. With the API, the app re-syncs on launch and picks up renames, new bouquets, and EPG mappings without touching settings. That is why most current apps (TiviMate, IPTV Streamers, Smarters) default to the Xtream login when the provider supports it, and open-source clients documented at https://kodi.wiki/view/IPTV handle both inputs.
+
+If you want the side-by-side on formats, auth, and when a static playlist still wins, this [m3u vs xtream codes api](https://xtreamcode.tv/blog/m3u-vs-xtream-codes) comparison lays it out with examples from real provider panels.
